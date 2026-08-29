@@ -1,0 +1,158 @@
+[
+  {
+    "category": "library",
+    "question": "library timing",
+    "answer": "The campus library is open from 8:00 AM to 8:00 PM, Monday to Saturday.",
+    "location": "Main Academic Block"
+  },
+  {
+    "category": "library",
+    "question": "library books",
+    "answer": "Students can borrow academic books and reference material from the campus library.",
+    "location": "Main Academic Block"
+  },
+  {
+    "category": "canteen",
+    "question": "canteen timing",
+    "answer": "The campus canteen is open from 8:00 AM to 8:00 PM.",
+    "location": "Student Block"
+  },
+  {
+    "category": "canteen",
+    "question": "food",
+    "answer": "The campus canteen provides snacks, meals and beverages for students.",
+    "location": "Student Block"
+  },
+  {
+    "category": "hostel",
+    "question": "hostel information",
+    "answer": "Hostel facilities are available for eligible students. Contact the hostel office for room allocation.",
+    "location": "Hostel Block"
+  },
+  {
+    "category": "hostel",
+    "question": "hostel office",
+    "answer": "The hostel office handles room allocation, hostel maintenance and student accommodation queries.",
+    "location": "Hostel Block"
+  },
+  {
+    "category": "placement",
+    "question": "placement office",
+    "answer": "The placement office manages campus recruitment, internships and placement-related activities.",
+    "location": "Training and Placement Cell"
+  },
+  {
+    "category": "placement",
+    "question": "internship",
+    "answer": "Students can contact the Training and Placement Cell for internship opportunities and recruitment updates.",
+    "location": "Training and Placement Cell"
+  },
+  {
+    "category": "medical",
+    "question": "medical center",
+    "answer": "The campus medical center provides basic medical assistance to students.",
+    "location": "Medical Center"
+  },
+  {
+    "category": "medical",
+    "question": "doctor",
+    "answer": "Students requiring basic medical assistance can visit the campus medical center.",
+    "location": "Medical Center"
+  },
+  {
+    "category": "sports",
+    "question": "sports facilities",
+    "answer": "The campus provides facilities for outdoor and indoor sports activities.",
+    "location": "Sports Complex"
+  },
+  {
+    "category": "sports",
+    "question": "gym",
+    "answer": "Students can access the campus fitness and sports facilities according to campus rules.",
+    "location": "Sports Complex"
+  },
+  {
+    "category": "fees",
+    "question": "fee information",
+    "answer": "For fee-related information, students should contact the accounts or administration office.",
+    "location": "Accounts Office"
+  },
+  {
+    "category": "fees",
+    "question": "fee payment",
+    "answer": "Fee payment and related queries are handled by the accounts office.",
+    "location": "Accounts Office"
+  },
+  {
+    "category": "admin",
+    "question": "administration office",
+    "answer": "The administration office handles student records, certificates, documents and administrative services.",
+    "location": "Administrative Block"
+  },
+  {
+    "category": "admin",
+    "question": "certificate",
+    "answer": "Students can contact the administration office for certificates and official documents.",
+    "location": "Administrative Block"
+  },
+  {
+    "category": "wifi",
+    "question": "campus wifi",
+    "answer": "Campus Wi-Fi is available in academic and common student areas. Students should use their authorized campus credentials.",
+    "location": "Academic and Student Blocks"
+  },
+  {
+    "category": "wifi",
+    "question": "internet",
+    "answer": "For campus internet connectivity issues, students should contact the IT support desk.",
+    "location": "IT Support Center"
+  },
+  {
+    "category": "transport",
+    "question": "campus transport",
+    "answer": "Campus transport services are available on designated routes and schedules.",
+    "location": "Transport Office"
+  },
+  {
+    "category": "transport",
+    "question": "bus",
+    "answer": "Students can contact the transport office for campus bus routes and timings.",
+    "location": "Transport Office"
+  },
+  {
+    "category": "labs",
+    "question": "computer lab",
+    "answer": "Computer laboratories are available for academic and practical work according to department schedules.",
+    "location": "Academic Block"
+  },
+  {
+    "category": "labs",
+    "question": "laboratory",
+    "answer": "Students can access departmental laboratories during their scheduled practical sessions.",
+    "location": "Academic Block"
+  },
+  {
+    "category": "classroom",
+    "question": "classroom",
+    "answer": "Classrooms are located across the academic blocks. Students should check their timetable for room allocation.",
+    "location": "Academic Block"
+  },
+  {
+    "category": "events",
+    "question": "campus events",
+    "answer": "Campus events, workshops and student activities are announced through official campus communication channels.",
+    "location": "Student Activity Center"
+  },
+  {
+    "category": "emergency",
+    "question": "emergency help",
+    "answer": "In an emergency, immediately contact the appropriate campus security or emergency service.",
+    "location": "Campus Security Office"
+  },
+  {
+    "category": "security",
+    "question": "security office",
+    "answer": "The campus security office handles safety and security-related concerns.",
+    "location": "Main Gate"
+  }
+]

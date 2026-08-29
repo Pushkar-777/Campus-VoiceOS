@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Campus VoiceOS</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #243b7a,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1e3a8a
+                );
+
+            color: white;
+
+            padding: 30px 15px;
+
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            margin: auto;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .logo {
+
+            font-size: 55px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        h1 {
+
+            font-size: 43px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .subtitle {
+
+            margin-top: 8px;
+
+            color: #cbd5e1;
+
+            font-size: 16px;
+
+        }
+
+
+        .system-status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 15px;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(34,197,94,.13);
+
+            color: #86efac;
+
+            font-size: 13px;
+
+        }
+
+
+        .status-dot {
+
+            width: 9px;
+
+            height: 9px;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px #22c55e;
+
+        }
+
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .main-card {
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid rgba(255,255,255,.15);
+
+            backdrop-filter:
+                blur(18px);
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.35);
+
+        }
+
+
+        /* =========================
+           MIC
+        ========================= */
+
+        .mic-section {
+
+            text-align: center;
+
+            margin: 5px 0 30px;
+
+        }
+
+
+        #micButton {
+
+            width: 125px;
+
+            height: 125px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
+            color: white;
+
+            font-size: 48px;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+            box-shadow:
+                0 12px 40px
+                rgba(37,99,235,.5);
+
+        }
+
+
+        #micButton:hover {
+
+            transform: scale(1.06);
+
+        }
+
+
+        #micButton.recording {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dc2626,
+                    #ef4444
+                );
+
+            animation:
+                pulse 1.2s infinite;
+
+        }
+
+
+        @keyframes pulse {
+
+            0% {
+
+                box-shadow:
+                    0 0 0 0
+                    rgba(239,68,68,.7);
+
+            }
+
+            70% {
+
+                box-shadow:
+                    0 0 0 30px
+                    rgba(239,68,68,0);
+
+            }
+
+            100% {
+
+                box-shadow:
+                    0 0 0 0
+                    rgba(239,68,68,0);
+
+            }
+
+        }
+
+
+        .mic-text {
+
+            margin-top: 15px;
+
+            color: #cbd5e1;
+
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+
+        #queryInput {
+
+            flex: 1;
+
+            padding: 17px;
+
+            border: none;
+
+            outline: none;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+        }
+
+
+        #askButton {
+
+            padding: 0 30px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #22c55e;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        #askButton:hover {
+
+            background: #16a34a;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+
+            margin-top: 28px;
+
+            margin-bottom: 13px;
+
+            font-size: 18px;
+
+        }
+
+
+        /* =========================
+           QUICK SEARCH
+        ========================= */
+
+        .quick-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .quick-btn {
+
+            border: none;
+
+            padding: 15px 8px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+            font-size: 14px;
+
+        }
+
+
+        .quick-btn:hover {
+
+            background:
+                rgba(255,255,255,.18);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .quick-icon {
+
+            display: block;
+
+            font-size: 25px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        /* =========================
+           SUGGESTIONS
+        ========================= */
+
+        .suggestion-grid {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+        }
+
+
+        .suggestion-btn {
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            background:
+                rgba(255,255,255,.05);
+
+            color: #cbd5e1;
+
+            padding: 10px 14px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        .suggestion-btn:hover {
+
+            background:
+                rgba(96,165,250,.18);
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+
+            display: none;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #93c5fd;
+
+        }
+
+
+        .loader {
+
+            display: inline-block;
+
+            width: 18px;
+
+            height: 18px;
+
+            border:
+                3px solid
+                rgba(255,255,255,.25);
+
+            border-top-color:
+                #60a5fa;
+
+            border-radius: 50%;
+
+            animation:
+                spin .8s linear infinite;
+
+            vertical-align: middle;
+
+            margin-right: 7px;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(0,0,0,.22);
+
+        }
+
+
+        .result-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .result-header h2 {
+
+            font-size: 21px;
+
+        }
+
+
+        .clear-btn {
+
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.09);
+
+            color: #cbd5e1;
+
+            cursor: pointer;
+
+        }
+
+
+        .clear-btn:hover {
+
+            background:
+                rgba(255,255,255,.16);
+
+        }
+
+
+        #transcript {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(96,165,250,.08);
+
+            color: #93c5fd;
+
+        }
+
+
+        .answer-item {
+
+            margin-top: 12px;
+
+            padding: 17px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.07);
+
+            border-left:
+                3px solid #60a5fa;
+
+        }
+
+
+        .answer-category {
+
+            color: #60a5fa;
+
+            font-weight: bold;
+
+            text-transform: capitalize;
+
+        }
+
+
+        .answer-text {
+
+            margin-top: 8px;
+
+            line-height: 1.55;
+
+            color: #e2e8f0;
+
+        }
+
+
+        .location {
+
+            display: block;
+
+            margin-top: 10px;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+
+        }
+
+
+        .speak-button {
+
+            margin-top: 16px;
+
+            padding: 11px 18px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #7c3aed;
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+
+        .speak-button:hover {
+
+            background: #6d28d9;
+
+        }
+
+
+        /* =========================
+           HISTORY
+        ========================= */
+
+        #historySection {
+
+            margin-top: 30px;
+
+        }
+
+
+        .history-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 12px;
+
+            color: #e2e8f0;
+
+        }
+
+
+        .clear-history {
+
+            border: none;
+
+            padding: 7px 11px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: #94a3b8;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+        }
+
+
+        .clear-history:hover {
+
+            background:
+                rgba(255,255,255,.15);
+
+            color: white;
+
+        }
+
+
+        #historyList {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .history-item {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            text-align: left;
+
+            padding: 12px 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            color: #cbd5e1;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        .history-item:hover {
+
+            background:
+                rgba(255,255,255,.14);
+
+            transform:
+                translateX(3px);
+
+        }
+
+
+        .history-empty {
+
+            padding: 12px 15px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            color: #94a3b8;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .feature {
+
+            text-align: center;
+
+            padding: 19px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            border-radius: 13px;
+
+            color: #cbd5e1;
+
+        }
+
+
+        .feature-icon {
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .feature p {
+
+            margin-top: 5px;
+
+            font-size: 13px;
+
+            color: #94a3b8;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:700px) {
+
+            body {
+
+                padding:
+                    15px 10px;
+
+            }
+
+
+            .main-card {
+
+                padding:
+                    23px 15px;
+
+            }
+
+
+            h1 {
+
+                font-size: 32px;
+
+            }
+
+
+            .quick-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .search-box {
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            #askButton {
+
+                padding: 14px;
+
+            }
+
+
+            .features {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <div class="header">
+
+        <div class="logo">
+            🎓
+        </div>
+
+
+        <h1>
+            Campus VoiceOS
+        </h1>
+
+
+        <p class="subtitle">
+            AI-powered voice assistant for your campus
+        </p>
+
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span id="systemStatus">
+                System Online
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="main-card">
+
+
+        <!-- =========================
+             MICROPHONE
+        ========================== -->
+
+        <div class="mic-section">
+
+            <button
+                id="micButton"
+                onclick="startRecording()"
+            >
+                🎙️
+            </button>
+
+
+            <p
+                class="mic-text"
+                id="status"
+            >
+                Tap the microphone to ask something
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             SEARCH
+        ========================== -->
+
+        <div class="search-box">
+
+            <input
+                id="queryInput"
+                type="text"
+                placeholder="Ask about library, hostel, fees, placements..."
+                onkeydown="handleEnter(event)"
+            >
+
+
+            <button
+                id="askButton"
+                onclick="askQuestion()"
+            >
+                Ask
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             QUICK SEARCH
+        ========================== -->
+
+        <div class="section-title">
+
+            <strong>
+                Quick Campus Search
+            </strong>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('library timing')"
+            >
+
+                <span class="quick-icon">
+                    📚
+                </span>
+
+                Library
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('canteen timing')"
+            >
+
+                <span class="quick-icon">
+                    🍽️
+                </span>
+
+                Canteen
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('hostel information')"
+            >
+
+                <span class="quick-icon">
+                    🏠
+                </span>
+
+                Hostel
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('placement office')"
+            >
+
+                <span class="quick-icon">
+                    💼
+                </span>
+
+                Placement
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('medical center')"
+            >
+
+                <span class="quick-icon">
+                    🏥
+                </span>
+
+                Medical
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('sports facilities')"
+            >
+
+                <span class="quick-icon">
+                    ⚽
+                </span>
+
+                Sports
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('fee information')"
+            >
+
+                <span class="quick-icon">
+                    💳
+                </span>
+
+                Fees
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('campus wifi')"
+            >
+
+                <span class="quick-icon">
+                    📶
+                </span>
+
+                Wi-Fi
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('campus transport')"
+            >
+
+                <span class="quick-icon">
+                    🚌
+                </span>
+
+                Transport
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('computer laboratory')"
+            >
+
+                <span class="quick-icon">
+                    💻
+                </span>
+
+                Labs
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('campus events')"
+            >
+
+                <span class="quick-icon">
+                    🎉
+                </span>
+
+                Events
+
+            </button>
+
+
+            <button
+                class="quick-btn"
+                onclick="quickSearch('emergency help')"
+            >
+
+                <span class="quick-icon">
+                    🚨
+                </span>
+
+                Emergency
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             SUGGESTED QUESTIONS
+        ========================== -->
+
+        <div class="section-title">
+
+            <strong>
+                💡 Try asking
+            </strong>
+
+        </div>
+
+
+        <div class="suggestion-grid">
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('What are the library timings?')"
+            >
+                📚 Library timings?
+            </button>
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('Where is the medical center?')"
+            >
+                🏥 Medical center?
+            </button>
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('Where is the placement office?')"
+            >
+                💼 Placement office?
+            </button>
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('How can I get campus Wi-Fi?')"
+            >
+                📶 Campus Wi-Fi?
+            </button>
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('Where can I find computer labs?')"
+            >
+                💻 Computer labs?
+            </button>
+
+
+            <button
+                class="suggestion-btn"
+                onclick="quickSearch('What are the campus transport facilities?')"
+            >
+                🚌 Transport?
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             LOADING
+        ========================== -->
+
+        <div
+            class="loading"
+            id="loading"
+        >
+
+            <span class="loader"></span>
+
+            Processing your request...
+
+        </div>
+
+
+
+        <!-- =========================
+             RESULT
+        ========================== -->
+
+        <div
+            class="result"
+            id="result"
+        >
+
+
+            <div class="result-header">
+
+                <h2>
+                    📋 Campus Response
+                </h2>
+
+
+                <button
+                    class="clear-btn"
+                    onclick="clearResult()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+            <div id="transcript"></div>
+
+
+            <div id="answers"></div>
+
+
+            <button
+                class="speak-button"
+                onclick="speakAnswer()"
+            >
+                🔊 Speak Answer
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             HISTORY
+        ========================== -->
+
+        <div id="historySection">
+
+
+            <div class="history-header">
+
+                <strong>
+                    🕘 Recent Questions
+                </strong>
+
+
+                <button
+                    class="clear-history"
+                    onclick="clearHistory()"
+                >
+                    Clear History
+                </button>
+
+            </div>
+
+
+            <div id="historyList"></div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             FEATURES
+        ========================== -->
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎙️
+                </div>
+
+                <strong>
+                    Voice Input
+                </strong>
+
+                <p>
+                    Speak naturally
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <strong>
+                    Smart Search
+                </strong>
+
+                <p>
+                    Find campus information
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔊
+                </div>
+
+                <strong>
+                    Voice Response
+                </strong>
+
+                <p>
+                    Listen to answers
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer">
+
+        Campus VoiceOS • AI-powered campus assistance
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   CONFIG
+========================= */
+
+const API_URL =
+    "http://127.0.0.1:8000";
+
+
+let lastAnswer = "";
+
+let mediaRecorder = null;
+
+let audioChunks = [];
+
+let isRecording = false;
+
+let recentQuestions = [];
+
+
+
+/* =========================
+   LOAD HISTORY
+========================= */
+
+try {
+
+    const savedHistory =
+        localStorage.getItem(
+            "campusVoiceHistory"
+        );
+
+
+    if (savedHistory) {
+
+        recentQuestions =
+            JSON.parse(savedHistory);
+
+    }
+
+} catch (error) {
+
+    recentQuestions = [];
+
+}
+
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderHistory();
+
+        checkBackend();
+
+    }
+);
+
+
+
+/* =========================
+   BACKEND STATUS
+========================= */
+
+async function checkBackend() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/health`
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error();
+
+        }
+
+
+        document.getElementById(
+            "systemStatus"
+        ).innerText =
+            "System Online";
+
+    }
+
+    catch (error) {
+
+        document.getElementById(
+            "systemStatus"
+        ).innerText =
+            "Backend Offline";
+
+    }
+
+}
+
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+
+        askQuestion();
+
+    }
+
+}
+
+
+
+/* =========================
+   QUICK SEARCH
+========================= */
+
+function quickSearch(query) {
+
+    document.getElementById(
+        "queryInput"
+    ).value = query;
+
+
+    askQuestion();
+
+}
+
+
+
+/* =========================
+   ASK QUESTION
+========================= */
+
+async function askQuestion() {
+
+    const input =
+        document.getElementById(
+            "queryInput"
+        );
+
+
+    const query =
+        input.value.trim();
+
+
+    if (!query) {
+
+        return;
+
+    }
+
+
+    addToHistory(query);
+
+
+    showLoading(true);
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/query`,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+                            query: query
+                        })
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Backend request failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        displayResult(
+            query,
+            data.answer
+        );
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        displayError(
+            "Unable to connect to Campus VoiceOS backend."
+        );
+
+    }
+
+    finally {
+
+        showLoading(false);
+
+    }
+
+}
+
+
+
+/* =========================
+   DISPLAY RESULT
+========================= */
+
+function displayResult(
+    query,
+    answer
+) {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    const transcript =
+        document.getElementById(
+            "transcript"
+        );
+
+
+    const answers =
+        document.getElementById(
+            "answers"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    transcript.innerHTML = `
+        <strong>You asked:</strong>
+        ${escapeHtml(query)}
+    `;
+
+
+    answers.innerHTML = "";
+
+
+
+    /* STRING */
+
+    if (
+        typeof answer ===
+        "string"
+    ) {
+
+        answers.innerHTML = `
+
+            <div class="answer-item">
+
+                <div class="answer-text">
+
+                    ${escapeHtml(answer)}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        lastAnswer = answer;
+
+
+        return;
+
+    }
+
+
+
+    /* ARRAY */
+
+    if (
+        Array.isArray(answer)
+        &&
+        answer.length > 0
+    ) {
+
+
+        answer.forEach(item => {
+
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "answer-item";
+
+
+            div.innerHTML = `
+
+                <div class="answer-category">
+
+                    ${escapeHtml(
+                        item.category ||
+                        "Campus Information"
+                    )}
+
+                </div>
+
+
+                <div class="answer-text">
+
+                    ${escapeHtml(
+                        item.answer ||
+                        "Information available."
+                    )}
+
+                </div>
+
+
+                ${
+                    item.location
+                    ?
+                    `
+                    <span class="location">
+
+                        📍
+                        ${escapeHtml(
+                            item.location
+                        )}
+
+                    </span>
+                    `
+                    :
+                    ""
+                }
+
+            `;
+
+
+            answers.appendChild(div);
+
+
+        });
+
+
+        lastAnswer =
+            answer
+                .map(
+                    item =>
+                        item.answer ||
+                        ""
+                )
+                .join(". ");
+
+
+    }
+
+
+    else {
+
+
+        answers.innerHTML = `
+
+            <div class="answer-item">
+
+                <div class="answer-text">
+
+                    No relevant information found.
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        lastAnswer =
+            "No relevant information found.";
+
+    }
+
+}
+
+
+
+/* =========================
+   MICROPHONE
+========================= */
+
+async function startRecording() {
+
+
+    if (isRecording) {
+
+        stopRecording();
+
+        return;
+
+    }
+
+
+    try {
+
+
+        const stream =
+            await navigator
+                .mediaDevices
+                .getUserMedia({
+                    audio: true
+                });
+
+
+        mediaRecorder =
+            new MediaRecorder(
+                stream
+            );
+
+
+        audioChunks = [];
+
+
+        mediaRecorder
+            .ondataavailable =
+            event => {
+
+                if (
+                    event.data.size > 0
+                ) {
+
+                    audioChunks.push(
+                        event.data
+                    );
+
+                }
+
+            };
+
+
+        mediaRecorder.onstop =
+            async () => {
+
+
+                stream
+                    .getTracks()
+                    .forEach(
+                        track =>
+                            track.stop()
+                    );
+
+
+                const audioBlob =
+                    new Blob(
+                        audioChunks,
+                        {
+                            type:
+                                mediaRecorder.mimeType
+                        }
+                    );
+
+
+                await sendAudio(
+                    audioBlob
+                );
+
+            };
+
+
+        mediaRecorder.start();
+
+
+        isRecording = true;
+
+
+        const button =
+            document.getElementById(
+                "micButton"
+            );
+
+
+        button.classList.add(
+            "recording"
+        );
+
+
+        button.innerHTML =
+            "⏹️";
+
+
+        document.getElementById(
+            "status"
+        ).innerText =
+            "Listening... Tap again to stop";
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(error);
+
+
+        alert(
+            "Microphone permission is required."
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   STOP RECORDING
+========================= */
+
+function stopRecording() {
+
+
+    if (!mediaRecorder) {
+
+        return;
+
+    }
+
+
+    mediaRecorder.stop();
+
+
+    isRecording = false;
+
+
+    const button =
+        document.getElementById(
+            "micButton"
+        );
+
+
+    button.classList.remove(
+        "recording"
+    );
+
+
+    button.innerHTML =
+        "🎙️";
+
+
+    document.getElementById(
+        "status"
+    ).innerText =
+        "Transcribing your voice...";
+
+}
+
+
+
+/* =========================
+   SEND AUDIO
+========================= */
+
+async function sendAudio(
+    audioBlob
+) {
+
+
+    showLoading(true);
+
+
+    try {
+
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "file",
+            audioBlob,
+            "campus_voice.webm"
+        );
+
+
+        const response =
+            await fetch(
+                `${API_URL}/transcribe`,
+                {
+
+                    method: "POST",
+
+                    body: formData
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.detail ||
+                "Transcription failed"
+            );
+
+        }
+
+
+        const text =
+            data.text || "";
+
+
+        document.getElementById(
+            "queryInput"
+        ).value = text;
+
+
+        document.getElementById(
+            "status"
+        ).innerText =
+            "Voice converted to text";
+
+
+        if (text.trim()) {
+
+            await askQuestion();
+
+        }
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(error);
+
+
+        displayError(
+            error.message
+        );
+
+
+    }
+
+    finally {
+
+        showLoading(false);
+
+    }
+
+}
+
+
+
+/* =========================
+   SPEAK ANSWER
+========================= */
+
+function speakAnswer() {
+
+
+    if (!lastAnswer) {
+
+        return;
+
+    }
+
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        alert(
+            "Voice response is not supported in this browser."
+        );
+
+        return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            lastAnswer
+        );
+
+
+    speech.rate = 0.95;
+
+    speech.pitch = 1;
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+}
+
+
+
+/* =========================
+   CLEAR RESULT
+========================= */
+
+function clearResult() {
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "queryInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "answers"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "transcript"
+    ).innerHTML = "";
+
+
+    lastAnswer = "";
+
+
+}
+
+
+
+/* =========================
+   ADD HISTORY
+========================= */
+
+function addToHistory(
+    question
+) {
+
+
+    question =
+        question.trim();
+
+
+    if (!question) {
+
+        return;
+
+    }
+
+
+    recentQuestions =
+        recentQuestions.filter(
+            item =>
+                item.toLowerCase()
+                !==
+                question.toLowerCase()
+        );
+
+
+    recentQuestions.unshift(
+        question
+    );
+
+
+    if (
+        recentQuestions.length > 5
+    ) {
+
+        recentQuestions =
+            recentQuestions.slice(
+                0,
+                5
+            );
+
+    }
+
+
+    localStorage.setItem(
+        "campusVoiceHistory",
+        JSON.stringify(
+            recentQuestions
+        )
+    );
+
+
+    renderHistory();
+
+}
+
+
+
+/* =========================
+   RENDER HISTORY
+========================= */
+
+function renderHistory() {
+
+
+    const historyList =
+        document.getElementById(
+            "historyList"
+        );
+
+
+    if (!historyList) {
+
+        return;
+
+    }
+
+
+    historyList.innerHTML = "";
+
+
+    if (
+        recentQuestions.length === 0
+    ) {
+
+
+        historyList.innerHTML = `
+
+            <div class="history-empty">
+
+                Your recent questions
+                will appear here.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    recentQuestions.forEach(
+        question => {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "history-item";
+
+
+            button.innerHTML = `
+
+                🔎
+
+                <span>
+                    ${escapeHtml(
+                        question
+                    )}
+                </span>
+
+            `;
+
+
+            button.onclick = () => {
+
+                document.getElementById(
+                    "queryInput"
+                ).value =
+                    question;
+
+
+                askQuestion();
+
+            };
+
+
+            historyList.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   CLEAR HISTORY
+========================= */
+
+function clearHistory() {
+
+
+    recentQuestions = [];
+
+
+    localStorage.removeItem(
+        "campusVoiceHistory"
+    );
+
+
+    renderHistory();
+
+}
+
+
+
+/* =========================
+   LOADING
+========================= */
+
+function showLoading(show) {
+
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    loading.style.display =
+        show
+        ? "block"
+        : "none";
+
+}
+
+
+
+/* =========================
+   ERROR
+========================= */
+
+function displayError(
+    message
+) {
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "answers"
+    ).innerHTML = `
+
+        <div class="answer-item">
+
+            <div class="answer-text">
+
+                ❌
+                ${escapeHtml(message)}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================
+   HTML SECURITY
+========================= */
+
+function escapeHtml(text) {
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        String(text);
+
+
+    return div.innerHTML;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
